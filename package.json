@@ -4,7 +4,8 @@
   "description": "cj-cli脚手架工具",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --fix"
   },
   "bin": {
     "cj-cli": "./bin/index.js"
@@ -18,8 +19,16 @@
     "node": "^16.3.0"
   },
   "devDependencies": {
-    "chalk": "^4.1.0",
-    "commander": "^9.4.0",
-    "semver": "^7.3.7"
+    "eslint": "^7.32.0 || ^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "prettier": "^2.7.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1"
+  },
+  "dependencies": {
+    "commander": "^9.4.1",
+    "semver": "^7.3.8",
+    "chalk": "^4.1.2"
   }
 }

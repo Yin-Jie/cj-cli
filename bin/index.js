@@ -1,47 +1,43 @@
 #!/usr/bin/env node
 
-const program = require("commander");
-const semver = require("semver");
-const chalk = require("chalk");
-const package = require("../package.json");
+const { program } = require('commander')
+const semver = require('semver')
+const chalk = require('chalk')
+const pkg = require('../package.json')
 
-const requiredVersion = package.engines.node;
+const requiredVersion = pkg.engines.node
 
 // 检查node版本
-const ok = semver.satisfies(process.version, requiredVersion);
+const ok = semver.satisfies(process.version, requiredVersion, { includePrerelease: true })
 
 if (!ok) {
   console.log(
     chalk.red(
-      "You are using Node " +
-        process.version +
-        ", but this version of " +
-        "requires Node " +
-        requiredVersion +
-        ".\nPlease upgrade your Node version."
+      `You are using Node ${process.version}, but this version of ` +
+        `requires Node ${requiredVersion}.\nPlease upgrade your Node version.`
     )
-  );
-  process.exit(-1);
+  )
+  process.exit(-1)
 }
 
-// -V 输出包名和版本号信息
+/**
+ * 默认 -V输出版本信息
+ * 可以通过重写的信息，-v 输出包名和版本号信息
+ */
+program.version(`${pkg.version}`, '-v', '--version').usage('<command> [options]')
+
+// 配置命令
 program
-  .version(`${package.name} ${package.version}`)
-  .usage("<command> [options]");
+  .command('create <project-name>')
+  .description('create a new project from template')
+  .action((name) => {
+    console.log('name', name)
+  })
 
-// 配置命令行选项
-program.option("-c, --create", "根据模版初始化项目");
+// 解析命令行
+program.parse(process.argv)
 
-program.parse(process.argv);
-
-// const options = program.opts();
-// console.log(options);
-
-// //
-// program.command("create <project-name>").description("基于模版初始化一个项目");
-
-// const options = program.opts();
-// if (options.debug) console.log(options);
-// console.log("pizza details:");
-// if (options.small) console.log("- small pizza size");
-// if (options.pizzaType) console.log(`- ${options.pizzaType}`);
+// 没有参数时，输出帮助信息
+if (!process.argv.slice(2).length) {
+  program.outputHelp()
+}
