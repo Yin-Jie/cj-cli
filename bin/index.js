@@ -1,24 +1,21 @@
 #!/usr/bin/env node
 
 const { program } = require('commander')
-const semver = require('semver')
-const chalk = require('chalk')
+
+const checkVersion = require('../scripts/checkVersion')
+const getCommands = require('../scripts/getCommands')
+
 const pkg = require('../package.json')
 
-const requiredVersion = pkg.engines.node
-
 // 检查node版本
-const ok = semver.satisfies(process.version, requiredVersion, { includePrerelease: true })
+checkVersion()
 
-if (!ok) {
-  console.log(
-    chalk.red(
-      `You are using Node ${process.version}, but this version of ` +
-        `requires Node ${requiredVersion}.\nPlease upgrade your Node version.`
-    )
-  )
-  process.exit(-1)
-}
+// 遍历commands命令
+const commandsPath = getCommands()
+commandsPath.forEach((path) => {
+  const { command, description, action } = require(path)
+  program.command(command).description(description).action(action)
+})
 
 /**
  * 默认 -V输出版本信息
@@ -27,12 +24,6 @@ if (!ok) {
 program.version(`${pkg.version}`, '-v', '--version').usage('<command> [options]')
 
 // 配置命令
-program
-  .command('create <project-name>')
-  .description('create a new project from template')
-  .action((name) => {
-    console.log('name', name)
-  })
 
 // 解析命令行
 program.parse(process.argv)

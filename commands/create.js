@@ -1,0 +1,72 @@
+const fs = require('fs-extra')
+const inquirer = require('inquirer')
+const { execFileSync } = require('child_process')
+const download = require('download-git-repo')
+const handlebars = require('handlebars')
+const ora = require('ora')
+const logger = require('../scripts/log')
+
+let spinner
+
+module.exports = {
+  command: 'create <project-name>',
+  description: 'create a new project from template',
+  action: async (projectName) => {
+    const isExist = fs.existsSync(projectName)
+
+    // 已存在同名
+    if (isExist) {
+      const { override } = await inquirer.prompt([
+        {
+          type: 'confirm',
+          name: 'override',
+          message: '当前目录中已经存在同名的文件夹/项目。是否覆盖?',
+          default: false,
+        },
+      ])
+      if (override) {
+        fs.removeSync(projectName)
+      } else {
+        logger.red('停止创建项目。')
+        process.exit(-1)
+      }
+    }
+
+    const gitAuthor = execFileSync('git', ['config', 'user.name'], { encoding: 'utf-8' })
+
+    const { description, author } = await inquirer.prompt([
+      {
+        type: 'input',
+        name: 'description',
+        message: '项目描述',
+      },
+      {
+        type: 'input',
+        name: 'author',
+        message: '你的名字',
+        default: gitAuthor.trim(),
+      },
+    ])
+
+    spinner = ora('拉取远程模版中 loading...').start()
+    download('jayyoonn/cj-cli-template', projectName, (err) => {
+      if (err) {
+        spinner.fail(`拉取模版失败${err}`)
+        return
+      }
+      const packagePath = `${projectName}/package.json`
+      const packageContent = fs.readFileSync(packagePath, 'utf-8')
+
+      // 使用handlebars解析模板引擎
+      const packageResult = handlebars.compile(packageContent)({
+        description,
+        author,
+        name: projectName,
+      })
+
+      // 将解析后的结果重写到package.json文件中
+      fs.writeFileSync(packagePath, packageResult)
+      spinner.succeed('创建项目成功!!')
+    })
+  },
+}
