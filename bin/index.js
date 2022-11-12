@@ -1,9 +1,7 @@
-#!/usr/bin/env node
-
 const { program } = require('commander')
 
 const checkVersion = require('../scripts/checkVersion')
-const getCommands = require('../scripts/getCommands')
+const commandsOptions = require('../commands/index')
 
 const pkg = require('../package.json')
 
@@ -11,9 +9,8 @@ const pkg = require('../package.json')
 checkVersion()
 
 // 遍历commands命令
-const commandsPath = getCommands()
-commandsPath.forEach((path) => {
-  const { command, description, action } = require(path)
+Object.values(commandsOptions).forEach((item) => {
+  const { command, description, action } = item
   program.command(command).description(description).action(action)
 })
 

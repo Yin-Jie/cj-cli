@@ -10,7 +10,7 @@ let spinner
 
 module.exports = {
   command: 'create <project-name>',
-  description: 'create a new project from template',
+  description: '初始化项目',
   action: async (projectName) => {
     const isExist = fs.existsSync(projectName)
 

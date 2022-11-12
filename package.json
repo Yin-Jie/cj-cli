@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "build": "rm -rf dist && rollup -c"
   },
   "bin": {
-    "cj-cli": "./bin/index.js"
+    "cj-cli": "./dist/index.js"
   },
   "keywords": [
     "cj-cli"
@@ -19,12 +20,17 @@
     "node": "^16.3.0"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-json": "^5.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.1.0",
     "eslint": "^7.32.0 || ^8.2.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "rollup": "^3.3.0"
   },
   "dependencies": {
     "chalk": "^4.1.2",
@@ -32,7 +38,6 @@
     "commander": "^9.4.1",
     "download-git-repo": "^3.0.2",
     "fs-extra": "^10.1.0",
-    "globby": "^11.1.0",
     "handlebars": "^4.7.7",
     "inquirer": "^8.0.0",
     "ora": "^5.4.1",
