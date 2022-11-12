@@ -23,5 +23,6 @@ module.exports = {
     'no-console': 'off',
     'global-require': 'off',
     'import/no-dynamic-require': 'off',
+    'import/no-import-module-exports': 'off',
   },
 }

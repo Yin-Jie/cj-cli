@@ -1,14 +1,15 @@
+import logger from '../scripts/log'
+
 const fs = require('fs-extra')
 const inquirer = require('inquirer')
 const { execFileSync } = require('child_process')
 const download = require('download-git-repo')
 const handlebars = require('handlebars')
 const ora = require('ora')
-const logger = require('../scripts/log')
 
 let spinner
 
-module.exports = {
+export default {
   command: 'create <project-name>',
   description: '初始化项目',
   action: async (projectName) => {

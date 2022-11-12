@@ -14,8 +14,11 @@
   "keywords": [
     "cj-cli"
   ],
-  "author": "yinj",
+  "author": "jayyoonn",
   "license": "ISC",
+  "homepage": "https://github.com/jayyoonn/cj-cli",
+  "repository": "https://github.com/jayyoonn/cj-cli",
+  "bugs": "https://github.com/jayyoonn/cj-cli/issues",
   "engines": {
     "node": "^16.3.0"
   },

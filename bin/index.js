@@ -1,7 +1,7 @@
-const { program } = require('commander')
+import checkVersion from '../scripts/checkVersion'
+import commandsOptions from '../commands/index'
 
-const checkVersion = require('../scripts/checkVersion')
-const commandsOptions = require('../commands/index')
+const { program } = require('commander')
 
 const pkg = require('../package.json')
 
