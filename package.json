@@ -1,5 +1,5 @@
 {
-  "name": "cj-cli",
+  "name": "@jayyoonn/cj-cli",
   "version": "1.1.0",
   "description": "cj-cli脚手架工具",
   "main": "index.js",
