@@ -34,8 +34,9 @@ export default {
     }
 
     const gitAuthor = execFileSync('git', ['config', 'user.name'], { encoding: 'utf-8' })
+    const gitEmail = execFileSync('git', ['config', 'user.email'], { encoding: 'utf-8' })
 
-    const { description, author } = await inquirer.prompt([
+    const { description, author, email } = await inquirer.prompt([
       {
         type: 'input',
         name: 'description',
@@ -47,10 +48,16 @@ export default {
         message: '你的名字',
         default: gitAuthor.trim(),
       },
+      {
+        type: 'input',
+        name: 'email',
+        message: '你的邮箱',
+        default: gitEmail.trim(),
+      },
     ])
 
     spinner = ora('拉取远程模版中 loading...').start()
-    download('jayyoonn/cj-cli-template', projectName, (err) => {
+    download('jayyoonn/template-vite-vue-ts', projectName, (err) => {
       if (err) {
         spinner.fail(`拉取模版失败${err}`)
         return
@@ -62,6 +69,7 @@ export default {
       const packageResult = handlebars.compile(packageContent)({
         description,
         author,
+        email,
         name: projectName,
       })
 
