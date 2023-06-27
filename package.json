@@ -1,12 +1,13 @@
 {
   "name": "cj-cli",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "cj-cli脚手架工具",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --fix",
-    "build": "rm -rf dist && rollup -c"
+    "build": "rm -rf dist && rollup -c",
+    "release": "standard-version"
   },
   "bin": {
     "cj-cli": "./dist/index.js"
@@ -33,7 +34,8 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
-    "rollup": "^3.3.0"
+    "rollup": "^3.3.0",
+    "standard-version": "^9.5.0"
   },
   "dependencies": {
     "chalk": "^4.1.2",
