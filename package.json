@@ -1,16 +1,16 @@
 {
   "name": "@jayyoonn/cj-cli",
-  "version": "1.1.0",
+  "version": "2.1.0",
   "description": "cj-cli脚手架工具",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --fix",
-    "build": "rm -rf dist && rollup -c",
+    "build": "rm -rf dist && rollup --config rollup.config.ts --configPlugin typescript",
     "release": "standard-version"
   },
   "bin": {
-    "cj-cli": "./dist/index.js"
+    "cj-cli": "./dist/bundle.js"
   },
   "keywords": [
     "cj-cli"
@@ -24,28 +24,35 @@
     "node": "^16.3.0"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^23.0.2",
-    "@rollup/plugin-json": "^5.0.1",
-    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-commonjs": "^25.0.2",
+    "@rollup/plugin-json": "^5.0.2",
+    "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-terser": "^0.1.0",
-    "eslint": "^7.32.0 || ^8.2.0",
+    "@types/inquirer": "^9.0.3",
+    "eslint": "^8.44.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-import": "^2.25.2",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.7.1",
-    "rollup": "^3.3.0",
-    "standard-version": "^9.5.0"
+    "load-json-file": "^7.0.1",
+    "prettier": "^2.8.8",
+    "rollup": "^3.26.1",
+    "standard-version": "^9.5.0",
+    "tslib": "^2.6.0",
+    "typescript": "^5.1.6"
   },
   "dependencies": {
-    "chalk": "^4.1.2",
+    "@rollup/plugin-typescript": "^11.1.2",
+    "@types/node": "^20.3.2",
+    "@types/semver": "^7.5.0",
+    "chalk": "^5.3.0",
     "child_process": "^1.0.2",
-    "commander": "^9.4.1",
+    "commander": "^11.0.0",
     "download-git-repo": "^3.0.2",
-    "fs-extra": "^10.1.0",
+    "fs-extra": "^11.1.1",
     "handlebars": "^4.7.7",
-    "inquirer": "^8.0.0",
-    "ora": "^5.4.1",
+    "inquirer": "^9.2.7",
+    "ora": "^6.3.1",
     "semver": "^7.3.8"
   }
 }

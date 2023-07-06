@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/jayyoonn/cj-cli/compare/v1.1.0...v2.1.0) (2023-07-06)
+
+
+### Features
+
+* 修改package name；添加changelog ([d652797](https://github.com/jayyoonn/cj-cli/commit/d6527970e2a4928b289e00e0b14bbdf440c11932))
+
 ## 1.1.0 (2023-06-27)
 
 
