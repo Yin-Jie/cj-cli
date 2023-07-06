@@ -1,7 +1,6 @@
 import log from './log'
-
-const semver = require('semver')
-const pkg = require('../package.json')
+import semver from 'semver'
+import pkg from '../package.json'
 
 const requiredVersion = pkg.engines.node
 

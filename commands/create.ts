@@ -1,18 +1,17 @@
+import fs from 'fs'
+import inquirer from 'inquirer'
+import download from 'download-git-repo'
+import handlebars from 'handlebars'
+import ora from 'ora'
+import { execFileSync } from 'child_process'
 import logger from '../scripts/log'
 
-const fs = require('fs-extra')
-const inquirer = require('inquirer')
-const { execFileSync } = require('child_process')
-const download = require('download-git-repo')
-const handlebars = require('handlebars')
-const ora = require('ora')
-
-let spinner
+let spinner: any
 
 export default {
   command: 'create <project-name>',
   description: '初始化项目',
-  action: async (projectName) => {
+  action: async (projectName: string) => {
     const isExist = fs.existsSync(projectName)
 
     // 已存在同名
@@ -26,7 +25,7 @@ export default {
         },
       ])
       if (override) {
-        fs.removeSync(projectName)
+        fs.unlinkSync(projectName)
       } else {
         logger.red('停止创建项目。')
         process.exit(-1)
@@ -57,7 +56,7 @@ export default {
     ])
 
     spinner = ora('拉取远程模版中 loading...').start()
-    download('jayyoonn/template-vite-vue-ts', projectName, (err) => {
+    download('jayyoonn/template-vite-vue-ts', projectName, (err: Error) => {
       if (err) {
         spinner.fail(`拉取模版失败${err}`)
         return

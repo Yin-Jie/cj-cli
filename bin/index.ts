@@ -1,9 +1,9 @@
+import { Command } from 'commander'
 import checkVersion from '../scripts/checkVersion'
-import commandsOptions from '../commands/index'
+import commandsOptions from '../commands'
+import pkg from '../package.json'
 
-const { program } = require('commander')
-
-const pkg = require('../package.json')
+const program = new Command()
 
 // 检查node版本
 checkVersion()
@@ -18,7 +18,7 @@ Object.values(commandsOptions).forEach((item) => {
  * 默认 -V输出版本信息
  * 可以通过重写的信息，-v 输出包名和版本号信息
  */
-program.version(`${pkg.version}`, '-v', '--version').usage('<command> [options]')
+program.version(`${pkg?.version}`, '-v', '--version').usage('<command> [options]')
 
 // 配置命令
 
