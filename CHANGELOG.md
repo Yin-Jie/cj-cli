@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/jayyoonn/cj-cli/compare/v2.2.0...v2.3.0) (2023-07-07)
+
+
+### Features
+
+* 添加husky ([ccb5384](https://github.com/jayyoonn/cj-cli/commit/ccb53847d4f308a1ea6681a7ce6b2cea0d0a4573))
+* 新增git-cz ([a04c38f](https://github.com/jayyoonn/cj-cli/commit/a04c38f5ccb653b745030427da0f6b0f47ae1a23))
+
 ## [2.1.0](https://github.com/jayyoonn/cj-cli/compare/v2.2.0...v2.1.0) (2023-07-07)
 
 
