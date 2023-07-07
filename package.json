@@ -1,6 +1,6 @@
 {
   "name": "@jayyoonn/cj-cli",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "cj-cli脚手架工具",
   "type": "module",
   "scripts": {
@@ -9,11 +9,11 @@
     "build": "rm -rf dist && rollup --config rollup.config.ts --configPlugin typescript",
     "release": "standard-version",
     "prepare": "husky install",
-    "commit": "git-cz"  
+    "commit": "git-cz"
   },
-   "config": {
-      "commitizen": {
-        "path": "node_modules/cz-git"
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
     }
   },
   "bin": {
