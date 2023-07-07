@@ -1,6 +1,6 @@
 {
   "name": "@jayyoonn/cj-cli",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "cj-cli脚手架工具",
   "type": "module",
   "scripts": {

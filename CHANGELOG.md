@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.1](https://github.com/jayyoonn/cj-cli/compare/v2.3.0...v2.3.1) (2023-07-07)
+
+
+### Bug Fixes
+
+* 依赖调整 ([e5551f1](https://github.com/jayyoonn/cj-cli/commit/e5551f13876479d6c199a2a45048ab4c15713ecd))
+
 ## [2.3.0](https://github.com/jayyoonn/cj-cli/compare/v2.2.0...v2.3.0) (2023-07-07)
 
 
