@@ -1,0 +1,28 @@
+{
+  // 停止在父级目录中寻找配置
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+
+  // 配置多个环境
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+
+  // 让prettier的解析作为eslint的一部分
+  "extends": ["plugin:@typescript-eslint/recommended", "prettier"],
+  "parserOptions": {
+    // 支持最新的ECMAScript语法
+    "ecmaVersion": "latest"
+  },
+
+  // 关闭和eslint中以及和其他拓展中有冲突的规则
+  "plugins": ["@typescript-eslint", "prettier"],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-console": "off",
+    "global-require": "off",
+    "import/no-dynamic-require": "off",
+    "import/no-import-module-exports": "off"
+  }
+}

@@ -1,13 +1,14 @@
 {
   "name": "@jayyoonn/cj-cli",
-  "version": "2.2.0",
+  "version": "2.0.0",
   "description": "cj-cli脚手架工具",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --fix",
     "build": "rm -rf dist && rollup --config rollup.config.ts --configPlugin typescript",
-    "release": "standard-version"
+    "release": "standard-version",
+    "prepare": "husky install"
   },
   "bin": {
     "cj-cli": "./dist/bundle.js"
@@ -29,11 +30,14 @@
     "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-terser": "^0.1.0",
     "@types/inquirer": "^9.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
     "eslint": "^8.44.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.0",
     "load-json-file": "^7.0.1",
     "prettier": "^2.8.8",
     "rollup": "^3.26.1",
